@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EPickingService.View.MasterDetail">
+    <MasterDetailPage.Master>
+
+        <ContentPage Title="Menu" BackgroundColor="White">
+            <ScrollView  Orientation = "Vertical" VerticalOptions="StartAndExpand" >
+                <StackLayout Orientation="Vertical" BackgroundColor="White">
+
+                    <StackLayout HeightRequest="120" BackgroundColor="#e02226">
+                        <Label x:Name="NameWelcome" 
+                               Text="Bienvenido" 
+                               TextColor="White" 
+                               Font="Bold,30" 
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="Center"/>
+                        <Label x:Name="NameUser" 
+                               Text="Nom.Usuario" 
+                               TextColor="White" 
+                               Font="Bold,40" 
+                               HorizontalOptions="FillAndExpand" 
+                               VerticalOptions="Center"/>
+
+                    </StackLayout>
+                    
+                    <Button x:Name="NameZeroRows" 
+                            HeightRequest="70" 
+                            Image="MDphone.png" 
+                            Text="Cero Filas" 
+                            VerticalOptions="End" 
+                            BorderColor="Transparent" 
+                            BackgroundColor="Transparent" 
+                            Clicked="ZeroRows_Clicked"/>
+                    <!--<BoxView WidthRequest="50" 
+                             HeightRequest="1" 
+                             Opacity="0.5"
+                             BackgroundColor="#880E4F"/>-->
+
+                    <Button x:Name="Namesalir" 
+                            HeightRequest="70" 
+                            Image="MDclose.png" 
+                            Text="Salir" 
+                            VerticalOptions="End" 
+                            BorderColor="Transparent" 
+                            BackgroundColor="Transparent" 
+                            Clicked="Namesalir_Clicked"/>
+                    <!--<BoxView WidthRequest="50" 
+                             HeightRequest="1" 
+                             Opacity="0.5"
+                             BackgroundColor="#880E4F"/>-->
+
+                </StackLayout>
+            </ScrollView>
+        </ContentPage>
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+
+        <NavigationPage BackgroundColor="White">
+            <x:Arguments>
+
+                <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                             x:Name="Indexfull" Title="Picking">
+
+                    <ContentPage.ToolbarItems>
+                        <ToolbarItem x:Name="CArticulo"  
+                                     Text="Consulta Articulo" 
+                                     Order="Secondary" 
+                                     Priority="1" 
+                                     />
+                        <ToolbarItem x:Name="CapturaA"  
+                                     Text="Captura Articulo" 
+                                     Order="Secondary" 
+                                     Priority="2" 
+                                     />
+                    </ContentPage.ToolbarItems>
+                    <!--<ScrollView >
+                        <Grid>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <ListView x:Name="ProgramaList" 
+                                      HasUnevenRows="true" 
+                                      ItemTapped="lvItemTapped"
+                                      Grid.Row="1" 
+                                      IsPullToRefreshEnabled="True" 
+                                      RefreshCommand="{Binding RefreshCommand}" 
+                                      IsRefreshing="{Binding IsRefreshing, Mode=OneWay}">
+
+                                    <ListView.ItemTemplate>
+
+                                        <DataTemplate>
+
+                                            <ViewCell>
+                                                <StackLayout Orientation="Horizontal" >
+                                                    <Image Source="iconcomment.png" 
+                                                       WidthRequest="60" 
+                                                       HeightRequest="60" 
+                                                       Aspect="AspectFit" />
+                                                    <Grid HorizontalOptions="FillAndExpand" Padding="10">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <StackLayout >
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <Label Text="OP#" TextColor="#2699FB" Grid.Row="0" FontSize="20" />
+                                                                <Label Text="{Binding OP}" 
+                                                                   HorizontalOptions="StartAndExpand" 
+                                                                   Grid.Row="2" 
+                                                                   TextColor="#282828"  
+                                                                   FontSize="20"/>
+                                                            </StackLayout>
+
+                                                            <Label Text="{Binding PROCESO}" 
+                                                               HorizontalOptions="StartAndExpand" 
+                                                               Grid.Row="3" 
+                                                               TextColor="#666666"  
+                                                               FontSize="15"/>
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <Label Text="Turno:" 
+                                                                   TextColor="#2699FB" 
+                                                                   Grid.Row="0" 
+                                                                   FontSize="20" />
+                                                                <Label Text="{Binding TURNO}"
+                                                                   HorizontalOptions="StartAndExpand"
+                                                                   Grid.Row="3" 
+                                                                   TextColor="#666666"  
+                                                                   FontSize="20"/>
+                                                            </StackLayout>
+                                                            <StackLayout Grid.Row="1" Orientation="Horizontal" Spacing="0">
+
+                                                                <Label Text="{Binding FECHAV}" 
+                                                                   TextColor="#666666" 
+                                                                   FontSize="17" 
+                                                                   HorizontalOptions="StartAndExpand"/>
+                                                                <Label Text="{Binding HORAINICIO}" 
+                                                                   TextColor="#666666" 
+                                                                   FontSize="17" 
+                                                                   HorizontalOptions="StartAndExpand"/>
+                                                            </StackLayout>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+
+                                            </ViewCell>
+
+                                        </DataTemplate>
+
+                                    </ListView.ItemTemplate>
+
+                                </ListView>
+
+                            </Grid>
+                            <ActivityIndicator 
+                            x:Name="ProgressLoader" 
+                            IsRunning="True" 
+                            Color="#c93a8c" />
+
+                        </Grid>
+                    </ScrollView>-->
+                </ContentPage>
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

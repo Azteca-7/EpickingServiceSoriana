@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:EPickingService.View.Render"
+             x:Class="EPickingService.View.ZeroRows"
+             Title="Cero Filas">
+
+    <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <ScrollView Orientation="Vertical" Grid.Row="0">
+                <StackLayout>
+                    <Image
+                Source="{Binding RutaFoto}"
+                Aspect="AspectFit"/>
+                </StackLayout>
+            </ScrollView>
+            <ScrollView Orientation="Vertical" Grid.Row="1">
+                <StackLayout>
+                    <Label Text="Ruta Foto"></Label>
+                    <Label x:Name="Label_Rutafoto" Text="{Binding RutaFoto}"></Label>
+                </StackLayout>
+            </ScrollView>
+
+            <Grid Grid.Row="2">
+
+                <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                    <Button x:Name="btn_Slectphoto" 
+                        Command="{Binding SeleccionarFotoComand}"
+                        Text="Elegir Foto" 
+                        BorderRadius="100" 
+                        FontSize="Medium" BorderWidth="2"  
+                        HeightRequest="40"  
+                        WidthRequest="200" 
+                        HorizontalOptions="EndAndExpand"
+                        VerticalOptions="EndAndExpand"   
+                        TextColor="White" 
+                        BorderColor="White" 
+                        BackgroundColor="#a7b409"/>
+
+                    <Button x:Name="btn_Makephoto" 
+                        Command="{Binding TomarFotoComand}"
+                        Text="Tomar Foto" 
+                        BorderRadius="100" 
+                        FontSize="Medium" BorderWidth="2"  
+                        HeightRequest="40"  
+                        WidthRequest="200" 
+                        HorizontalOptions="EndAndExpand"
+                        VerticalOptions="EndAndExpand"   
+                        TextColor="White" 
+                        BorderColor="White" 
+                        BackgroundColor="#a7b409"
+                            
+                            
+                            />
+                    
+                    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                        <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                            <Label Text="Tienda:" 
+                       WidthRequest="200" 
+                       HeightRequest="40" 
+                       FontAttributes="Bold" 
+                       FontSize="20" XAlign="Start" />
+
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                            <custom:CustomEntry
+                                Keyboard="Text"
+                                x:Name="Tienda_Entry"
+                                CornerRadius="18"
+                                IsCurvedCornersEnabled="True"
+                                BorderColor="#a7b409"    
+                                HorizontalTextAlignment="Start"
+                                FontSize="Medium"
+                                HeightRequest="40"
+                                PlaceholderColor="Gray"
+                                TextColor="Black"
+                                FontAttributes="Bold"
+                                WidthRequest="200"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                            />
+
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                        <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                            <Label Text="No.Caja:" 
+                       WidthRequest="200" 
+                       HeightRequest="40" 
+                       FontAttributes="Bold" 
+                       FontSize="20" XAlign="Start" />
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                            <custom:CustomEntry
+                                Keyboard="Text"
+                                x:Name="Caja_Entry"
+                                CornerRadius="18"
+                                IsCurvedCornersEnabled="True"
+                                BorderColor="#a7b409"    
+                                HorizontalTextAlignment="Start"
+                                FontSize="Medium"
+                                HeightRequest="40"
+                                PlaceholderColor="Gray"
+                                TextColor="Black"
+                                FontAttributes="Bold"
+                                WidthRequest="200"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                            />
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                        <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                            <Label Text="Fecha:" 
+                       WidthRequest="200" 
+                       HeightRequest="40" 
+                       FontAttributes="Bold" 
+                       FontSize="20" XAlign="Start" />
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                            <DatePicker 
+                            x:Name="Dpicker_"
+                                FontSize="Medium"
+                                HeightRequest="40"
+                                TextColor="#a7b409"
+                                FontAttributes="Bold"
+                                WidthRequest="250"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                         />
+                            <Button x:Name="btn_sentInfo" 
+                        Text="Enviar" 
+                        BorderRadius="100" 
+                        FontSize="Medium" 
+                        BorderWidth="2"  
+                        HeightRequest="40"  
+                        WidthRequest="200" 
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"   
+                        TextColor="White" 
+                        BorderColor="White" 
+                        BackgroundColor="#a7b409"
+                        Clicked="Btn_sentInfo_Clicked"/>
+                        </StackLayout>
+
+                    </StackLayout>
+                    
+                </StackLayout>
+
+
+                
+            </Grid>
+
+           
+
+
+        </Grid>
+    </StackLayout>
+
+</ContentPage>
